@@ -1,16 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Editor.css';
+import Tabs from '../../containers/Tabs';
+import SaveContainer from '../../containers/SaveContainer';
 
-function Editor({ markdown, updateMarkdown }) {
+function Editor({ active, markdown, handleMarkdownChange }) {
   return (
-    <textarea className={styles.Editor} value={markdown} onChange={updateMarkdown} />
+    <section className={styles.Editor}>
+      <Tabs />
+      <textarea value={markdown[active]} onChange={handleMarkdownChange} />
+      <SaveContainer />
+    </section>
   );
 }
 
 Editor.propTypes = {
-  markdown: PropTypes.string.isRequired,
-  updateMarkdown: PropTypes.func.isRequired
+  active: PropTypes.number.isRequired,
+  markdown: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  handleMarkdownChange: PropTypes.func.isRequired
 };
 
 export default Editor;

@@ -1,0 +1,16 @@
+.Save {
+  padding: .5em 1.2em;
+  background: linear-gradient(90deg, rgba(29,253,245,1) 0%, rgba(69,114,252,1) 100%);
+  color: #272822;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.5em;
+  letter-spacing: 0.3px;
+  word-spacing: 1px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 700;
+
+  &:hover {
+    background: linear-gradient(90deg, rgba(253,29,29,1) 0%, rgba(252,69,206,1) 100%);
+  }
+}
