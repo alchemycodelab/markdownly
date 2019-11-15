@@ -1,13 +1,25 @@
-import { connect } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
 import App from '../components/App';
-import { getLandingPage } from '../selectors/landingPageSelectors';
 
-const mapStateToProps = state => ({
-  landingPage: getLandingPage(state)
-});
+import { getLandingPage } from '../selectors/documentSelectors';
 
-const AppContainer = connect(
-  mapStateToProps
-)(App);
+export default function AppContainer() {
+  const landingPage = useSelector(getLandingPage);
 
-export default AppContainer;
+  return <App landingPage={landingPage} />;
+}
+
+
+
+
+// const mapStateToProps = state => ({
+//   landingPage: getLandingPage(state)
+// });
+
+// const AppContainer = connect(
+//   mapStateToProps
+// )(App);
+
+// export default AppContainer;

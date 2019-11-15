@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import reducer from './reducers/saveMarkdownReducer';
+import reducer from './reducers';
 
 
 const store = createStore(

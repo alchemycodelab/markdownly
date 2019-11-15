@@ -1,22 +1,29 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Preview from '../components/markdown/Preview';
 import Editor from '../components/markdown/Editor';
 import styles from './Document.css';
 
-import { updateHistory } from '../actions/saveMarkdownActions';
+import { updateHistory } from '../actions/documentActions';
+import { getCurrentIndex, getFilteredHistory } from '../selectors/documentSelectors';
 
-import { getCurrentIndex, getHistoryArray } from '../selectors/saveMarkdownSelectors';
 
-const Document = ({ historyArray, currentIndex, updateMarkdown }) => {
+export default function DocumentContainer() {
+
+
+  const currentIndex = useSelector(state => getCurrentIndex(state));
+  const historyArray = useSelector(state =>  getFilteredHistory(state));
   let currentBody = '';
   if(historyArray[currentIndex]) currentBody = historyArray[currentIndex].body;
+
+  const dispatch = useDispatch();
+  const updateMarkdown = ({ target }) => dispatch(updateHistory(target.value));
 
   useEffect(() => {
     localStorage.setItem('history', JSON.stringify(historyArray));
   });
+
   return (
     <>
       <div className={styles.Document}>
@@ -25,32 +32,49 @@ const Document = ({ historyArray, currentIndex, updateMarkdown }) => {
       </div>
     </>
   );
-};
+}
 
-Document.propTypes = {
-  currentIndex: PropTypes.number.isRequired,
-  historyArray: PropTypes.array.isRequired,
-  updateMarkdown: PropTypes.func.isRequired
-};
+// const Document = ({ historyArray, currentIndex, updateMarkdown }) => {
+//   let currentBody = '';
+//   if(historyArray[currentIndex]) currentBody = historyArray[currentIndex].body;
 
-const mapStateToProps = (state) => ({
-  currentIndex: getCurrentIndex(state),
-  historyArray: getHistoryArray(state),
-});
+//   useEffect(() => {
+//     localStorage.setItem('history', JSON.stringify(historyArray));
+//   });
+//   return (
+//     <>
+//       <div className={styles.Document}>
+//         <Editor markdown={currentBody} updateMarkdown={updateMarkdown}/>
+//         <Preview markdown={currentBody} />
+//       </div>
+//     </>
+//   );
+// };
 
-const mapDispatchToProps = dispatch => ({
-  updateMarkdown({ target }) {
-    dispatch(updateHistory(target.value));
+// Document.propTypes = {
+//   currentIndex: PropTypes.number.isRequired,
+//   historyArray: PropTypes.array.isRequired,
+//   updateMarkdown: PropTypes.func.isRequired
+// };
+
+// const mapStateToProps = (state) => ({
+//   currentIndex: getCurrentIndex(state),
+//   historyArray: getHistoryArray(state),
+// });
+
+// const mapDispatchToProps = dispatch => ({
+//   updateMarkdown({ target }) {
+//     dispatch(updateHistory(target.value));
     
-  }
-});
+//   }
+// });
 
-const DocumentContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Document);
+// const DocumentContainer = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(Document);
 
-export default DocumentContainer;
+// export default DocumentContainer;
 
 
 

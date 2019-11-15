@@ -1,7 +1,5 @@
 
-import { TAB_NAME_CHANGE, DELETE, UPDATE_HISTORY, NEW_HISTORY, TITLE_SEARCH_CHANGE, UPDATE_CURRENT_INDEX, manageStorage } from '../actions/saveMarkdownActions';
-import { SWITCH_BODY } from '../actions/documentActions';
-import { LANDING_PAGE } from '../actions/landingPageActions';
+import { SWITCH_BODY, LANDING_PAGE, TAB_NAME_CHANGE, DELETE, UPDATE_HISTORY, NEW_HISTORY, TITLE_SEARCH_CHANGE, UPDATE_CURRENT_INDEX, manageStorage } from '../actions/documentActions';
 
 const initialState = {
   tabName: '',

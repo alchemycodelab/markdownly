@@ -1,6 +1,5 @@
-import saveMarkdownReducer from './saveMarkdownReducer';
-
-import { TAB_NAME_CHANGE, UPDATE_HISTORY, NEW_HISTORY, UPDATE_CURRENT_INDEX } from '../actions/saveMarkdownActions';
+import saveMarkdownReducer from './documentReducer';
+import { TAB_NAME_CHANGE, UPDATE_HISTORY, NEW_HISTORY, UPDATE_CURRENT_INDEX } from '../actions/documentActions';
 
 describe('saveMarkdown reducer', ()=> {
   const state = {
