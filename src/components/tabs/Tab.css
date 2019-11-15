@@ -1,0 +1,18 @@
+.Tab {
+  display: flex;
+  h2 {
+    font-size: .8em;
+    margin: 0;
+    padding: 5px;
+  }
+  button {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 2em;
+    height: 2em;
+    font-size: .2em;
+    padding: 0 .5em;
+    margin: .5em;
+    text-align: center;
+    border: none;
+  }
+}

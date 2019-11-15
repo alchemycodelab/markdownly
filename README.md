@@ -20,3 +20,16 @@ demo, but to prevent any mishaps we are going to freeze new feature development 
   * create Checklists (Part of the Trello cards)
   * ask for clarification
 * Add new cards as needed (e.g. Bugs) and label them
+
+## Mockup
+
+Components
+![](assets/image.png)
+![](assets/image2.png)
+  Form - will handle adding new Tabs
+  Tabs - will render Tabs
+  Tab - will include name of display you want to view, handleClick func to switch the specific view and a button to delete the tab
+
+Containers
+  Header - Contain the Form and Tabs Components will handle logic renderting the tabs
+  Main - will handle logic to switch between display

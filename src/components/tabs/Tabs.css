@@ -1,0 +1,11 @@
+.Tabs {
+  display: flex;
+
+  li {
+    padding: 0 5px;
+    margin: 5px;
+    list-style: none;
+    border: 1px solid slategray;
+  }
+
+}
