@@ -32,15 +32,14 @@ function saveMarkdownReducer(state = initialState, action) {
         }
         return item;
       }) };
-
-    case LANDING_PAGE:
-      return { ...state, landingPage: false };
     case DELETE:
       if(state.history.length === 1) return { ...state, history: [] };
       state.history.splice(action.payload, 1);
       return state;
     case TITLE_SEARCH_CHANGE:
       return { ...state, searchTitle: action.payload };
+    case LANDING_PAGE:
+      return { ...state, landingPage: false };
     default:
       return state;
   }
