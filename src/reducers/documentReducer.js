@@ -9,7 +9,7 @@ const initialState = {
   searchTitle: ''
 };
 
-function saveMarkdownReducer(state = initialState, action) {
+function documentReducer(state = initialState, action) {
   switch(action.type) {
     case TAB_NAME_CHANGE:
       return { ...state, tabName: action.payload };
@@ -44,4 +44,4 @@ function saveMarkdownReducer(state = initialState, action) {
   }
 }
 
-export default saveMarkdownReducer;
+export default documentReducer;
