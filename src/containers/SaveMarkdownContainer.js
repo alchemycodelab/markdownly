@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import SaveMarkdown from '../components/markdown/SaveMarkdown';
 
-import { sendTabName, sendTitleSearch, updateCurrentIndex, newHistory, switchBody } from '../actions/documentActions';
+import { sendTabName, sendTitleSearch, updateCurrentIndex, newHistory } from '../actions/documentActions';
 import { getTabName, getHistoryArray, getTitleSearch } from '../selectors/documentSelectors';
 
 
@@ -16,21 +16,18 @@ export default function SaveMarkdownContainer() {
 
 
   const dispatch = useDispatch();
+
   const handleChange = ({ target }) => {
     if(target.name === 'add') dispatch(sendTabName(target.value));
     else dispatch(sendTitleSearch(target.value));
   };
+
   const handleAdd = (name, historyArray) => {
     let newName = name;
     if(historyArray.length > 0) {
-      for(let i = 0; i < historyArray.length; i++) {
-        if(name === historyArray[i].name) {
-          newName = `${name}-copy`; 
-        }
-      }
+      newName = checkName(name, historyArray);
     }
     dispatch(updateCurrentIndex(historyArray.length));
-    dispatch(switchBody('', historyArray.length));
     dispatch(newHistory(newName, ''));
     localStorage.setItem('history', JSON.stringify(historyArray));
   };
@@ -47,6 +44,16 @@ export default function SaveMarkdownContainer() {
   );
 }
 
+
+function checkName(name, historyArray) {
+  for(let i = 0; i < historyArray.length; i++) {
+    if(name === historyArray[i].name) {
+      name = `${name}-copy`; 
+      checkName(name, historyArray);
+    }
+  }
+  return name;
+}
 
 // const SaveMarkdownContainer = ({ handleAdd, handleChange, tabName, titleSearch, historyArray }) => {
 //   return (
@@ -91,7 +98,6 @@ export default function SaveMarkdownContainer() {
 //       }
 //     }
 //     dispatch(updateCurrentIndex(historyArray.length));
-//     dispatch(switchBody('', historyArray.length));
 //     dispatch(newHistory(newName, ''));
 //     localStorage.setItem('history', JSON.stringify(historyArray));
 //   },

@@ -1,5 +1,5 @@
 
-import { SWITCH_BODY, LANDING_PAGE, TAB_NAME_CHANGE, DELETE, UPDATE_HISTORY, NEW_HISTORY, TITLE_SEARCH_CHANGE, UPDATE_CURRENT_INDEX, manageStorage } from '../actions/documentActions';
+import { LANDING_PAGE, TAB_NAME_CHANGE, DELETE, UPDATE_HISTORY, NEW_HISTORY, TITLE_SEARCH_CHANGE, UPDATE_CURRENT_INDEX, manageStorage } from '../actions/documentActions';
 
 const initialState = {
   tabName: '',
@@ -24,13 +24,6 @@ function documentReducer(state = initialState, action) {
       }) };
     case UPDATE_CURRENT_INDEX:
       return { ...state, currentIndex: action.payload };
-    case SWITCH_BODY:
-      return { ...state, history: state.history.map((item, index) => {
-        if(index === action.index) {
-          return { ...item, body: action.payload };
-        }
-        return item;
-      }) };
     case DELETE:
       if(state.history.length === 1) return { ...state, history: [] };
       state.history.splice(action.payload, 1);

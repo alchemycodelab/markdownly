@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Tabs from '../components/markdown/Tabs';
 
-import { switchBody, updateHistory, updateCurrentIndex, deleteFile } from '../actions/documentActions';
+import { updateHistory, updateCurrentIndex, deleteFile } from '../actions/documentActions';
 import { getCurrentIndex, getTitleSearch, getFilteredHistory } from '../selectors/documentSelectors';
 
 
@@ -17,16 +17,17 @@ export default function TabsNavContainer() {
 
   const dispatch = useDispatch();
   const handleSave = (oldTab, body) => dispatch(updateHistory(oldTab, body));
+
   const handleDelete = (index, historyArray) => {
-    dispatch(updateCurrentIndex(0));
     dispatch(deleteFile(index));
+    dispatch(updateCurrentIndex(0));
     localStorage.setItem('history', JSON.stringify(historyArray));    
   };
+
   const selectTab = (newTab, historyArray, index) => {
     dispatch(updateCurrentIndex(index));
     if(historyArray.length === 0) return;
-    if(historyArray[index].name === newTab) dispatch(switchBody(historyArray[index].body, index));
-    localStorage.setItem('history', JSON.stringify(historyArray));    
+    if(historyArray[index].name === newTab) localStorage.setItem('history', JSON.stringify(historyArray));    
   };
   
   
@@ -84,8 +85,7 @@ export default function TabsNavContainer() {
 //   selectTab(newTab, historyArray, index) {
 //     dispatch(updateCurrentIndex(index));
 //     if(historyArray.length === 0) return;
-//     if(historyArray[index].name === newTab) dispatch(switchBody(historyArray[index].body, index));
-//     localStorage.setItem('history', JSON.stringify(historyArray));    
+//     if(historyArray[index].name === newTab) localStorage.setItem('history', JSON.stringify(historyArray));    
 //   },
 //   handleDelete(index, historyArray) {
 //     dispatch(updateCurrentIndex(0));

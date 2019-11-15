@@ -1,10 +1,3 @@
-export const SWITCH_BODY = 'SWITCH_BODY';
-export const switchBody = (body, index)=> ({
-  type: SWITCH_BODY,
-  payload: body,
-  index: index
-});
-
 export const LANDING_PAGE = 'LANDING_PAGE';
 export const leaveLandingPage = () => ({
   type: LANDING_PAGE

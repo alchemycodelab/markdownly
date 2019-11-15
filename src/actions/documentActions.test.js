@@ -1,12 +1,6 @@
-import { SWITCH_BODY,  switchBody, LANDING_PAGE,  leaveLandingPage, TAB_NAME_CHANGE, NEW_HISTORY, UPDATE_CURRENT_INDEX, UPDATE_HISTORY, sendTabName, updateCurrentIndex, newHistory, updateHistory } from './documentActions';
+import { LANDING_PAGE,  leaveLandingPage, TAB_NAME_CHANGE, NEW_HISTORY, UPDATE_CURRENT_INDEX, UPDATE_HISTORY, sendTabName, updateCurrentIndex, newHistory, updateHistory } from './documentActions';
 
 describe('document actions', ()=> {
-  it('SWITCH_BODY returns what is expected', ()=> {
-    expect(SWITCH_BODY).toEqual('SWITCH_BODY');
-  });
-  it('switchBody returns expected', ()=> {
-    expect(switchBody('dog', 1)).toEqual({ type: 'SWITCH_BODY', payload: 'dog', index: 1 });
-  });
   it('LANDING_PAGE returns what is expected', ()=> {
     expect(LANDING_PAGE).toEqual('LANDING_PAGE');
   });
