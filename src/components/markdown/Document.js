@@ -2,15 +2,26 @@ import React from 'react';
 import Preview from './Preview';
 import Editor from './Editor';
 import styles from './Document.css';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { TabBar } from './TabBar';
-import { getMarkdown, getFiles, getFocus, getEditTitle } from '../../selectors/markdownSelectors';
+import { getMarkdown, getEditTitle, getFiles, getFocus } from '../../selectors/markdownSelectors';
 import { updateMarkdown, changeFile, newTab, deleteTab, changeTitle, toggleEdit } from '../../actions/markdownActions';
 
+export default function Document() {
 
+  const markdown = useSelector(state => getMarkdown(state));
+  const files = useSelector(state => getFiles(state));
+  const focus = useSelector(state => getFocus(state));
+  const editTitle = useSelector(state => getEditTitle(state));
 
-const Document = ({ markdown, files, changeMarkdown, handleAdd, handleClick, handleDelete, handleTitle, editTitle, handleTitleEdit }) => {
+  const dispatch = useDispatch();
+  const changeMarkdown = ({ target }) => dispatch(updateMarkdown(target.value));
+  const handleClick = ({ currentTarget }) => dispatch(changeFile(currentTarget.id));
+  const handleAdd = () => dispatch(newTab());
+  const handleDelete = (id) => dispatch(deleteTab(id));
+  const handleTitle = ({ target }) => dispatch(changeTitle(target.value, target.id));
+  const handleTitleEdit = (id) => dispatch(toggleEdit(id));
 
   return (
     <>
@@ -30,36 +41,7 @@ const Document = ({ markdown, files, changeMarkdown, handleAdd, handleClick, han
       </div>
     </>
   );
-};
-
-
-const mapStateToProps = state => ({
-  markdown: getMarkdown(state),
-  files: getFiles(state),
-  focus: getFocus(state),
-  editTitle: getEditTitle(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  changeMarkdown({ target }) {
-    dispatch(updateMarkdown(target.value));
-  },
-  handleClick({ currentTarget }) {
-    dispatch(changeFile(currentTarget.id));
-  },
-  handleAdd() {
-    dispatch(newTab());
-  },
-  handleDelete(id) {
-    dispatch(deleteTab(id));
-  },
-  handleTitle({ target }) {
-    dispatch(changeTitle(target.value, target.id));
-  },
-  handleTitleEdit(id) {
-    dispatch(toggleEdit(id));
-  }
-});
+}
 
 Document.propTypes = {
   markdown: PropTypes.string.isRequired,
@@ -76,8 +58,3 @@ Document.propTypes = {
   }),
   handleTitleEdit: PropTypes.func.isRequired
 };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Document);
