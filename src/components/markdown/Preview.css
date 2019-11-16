@@ -1,0 +1,8 @@
+.Preview {
+  margin-top: 2.7em; 
+  padding: 3em;
+  min-width: 32.6%;
+  background: #e8e8ec;
+  background-size: cover;
+  box-shadow: 20px 20px 40px rgb(0, 0, 0);
+}
