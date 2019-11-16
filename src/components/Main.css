@@ -1,0 +1,26 @@
+.Header {
+  font-family: 'Yeseva One', cursive;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5em;
+  letter-spacing: .05em;
+  word-spacing: 1px;
+  padding: .5em;
+  margin: 0px;
+  background: black;
+  color: white;
+
+  span{
+    font-size: 1.1em;
+  }
+
+  .doubleu{
+    font-size: 1.0em;
+  }
+  .doubleu:hover{
+    color: pink;
+  }
+}
+
+

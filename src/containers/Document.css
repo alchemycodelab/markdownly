@@ -1,0 +1,10 @@
+.Document {
+  display: flex;
+  padding: 2em;
+  max-width: 100vw;
+  height: 100vh;
+  position: bottom;
+  background:  url('../assets/iStock-915520716.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}

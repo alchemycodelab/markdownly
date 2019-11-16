@@ -1,15 +1,91 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
-
 .Editor {
-  padding: 1em;
-  width: 50vw;
-  height: 100vh;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 1.5em;
-  line-height: 1.5;
-  background: #272822;
-  color: #F8F8F2;
-  letter-spacing: 0.3px;
-	word-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 2em;
+  
+  div{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2em;
+  }
+
+  .active {
+    border-bottom: none;
+    background: #ffe8c9;
+    margin: 0px 5px;
+    padding: .5em 1.2em;
+    max-width: 6em;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5em;
+    letter-spacing: 0.3px;
+    word-spacing: 1px;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 110%, 0% 110%);
+    outline: none;
+    border: none;
+  }
+
+  .deleteButton{
+    border: transparent;
+    border-radius: 50%;
+    background: none;
+    margin-left: .7em; 
+    font-size: .8em;
+    padding-bottom: .2em; 
+  }
+  
+  .deleteButton:hover{
+    background: black;
+    color: white;
+  }
+
+  .active:focus {
+    outline: none;
+  }
+
+  .tab {
+    margin: 0px 5px;
+    padding: .5em 1.2em;
+    background: #edd4b3;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5em;
+    letter-spacing: 0.3px;
+    word-spacing: 1px;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 110%, 0% 110%);
+    border-top-left-radius: 10%;
+    max-width: 6em;
+    outline: none;
+    border: none;
+  }
+
+  .addTab {
+    margin: 0px 5px;
+    padding: .4em .7em .5em .7em;
+    background: pink;
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5em;
+    letter-spacing: 0.3px;
+    word-spacing: 1px;
+    clip-path: circle(40%); 
+    max-width: 3em;
+  }
+
+  textarea {
+    padding: 1em;
+    width: 50vw;
+    height: 78.5%;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5em;
+    line-height: 1.5;
+    background: #ffe8c9;
+    letter-spacing: 0.3px;
+    word-spacing: 1px;
+    border: none;
+  }
+
+  textarea:focus {
+    outline: none;
+  }
 }

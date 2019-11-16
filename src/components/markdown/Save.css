@@ -1,0 +1,18 @@
+.Save {
+  padding: .5em 1.2em;
+  color: white;
+  background: black;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.5em;
+  letter-spacing: 0.3px;
+  word-spacing: 1px;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+
+  &:hover {
+    color: black;
+    background:pink;
+  }
+}
