@@ -44,17 +44,17 @@ export default function Document() {
 }
 
 Document.propTypes = {
-  markdown: PropTypes.string.isRequired,
-  changeMarkdown: PropTypes.func.isRequired,
-  files: PropTypes.array.isRequired,
+  markdown: PropTypes.string,
+  changeMarkdown: PropTypes.func,
+  files: PropTypes.array,
   handleAdd: PropTypes.func,
-  handleClick: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
-  focus: PropTypes.string.isRequired,
-  handleTitle: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
+  handleDelete: PropTypes.func,
+  focus: PropTypes.string,
+  handleTitle: PropTypes.func,
   editTitle: PropTypes.shape({
-    editInput: PropTypes.bool.isRequired,
-    id: PropTypes.string.isRequired
+    editInput: PropTypes.bool,
+    id: PropTypes.string
   }),
-  handleTitleEdit: PropTypes.func.isRequired
+  handleTitleEdit: PropTypes.func
 };
