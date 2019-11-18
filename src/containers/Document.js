@@ -4,20 +4,21 @@ import Editor from '../components/markdown/Editor';
 import styles from './Document.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMarkdown } from '../selectors/documentSelectors';
+import { updateMarkdown } from '../actions/documentActions';
 
 
-const Document = () => {
-  const markdown = useSelector(getMarkdown);
+export default function Document() {
+  const markdown = useSelector(state => getMarkdown(state));
   const dispatch = useDispatch();
-  const updateMarkdown = ({ target }) => dispatch(updateMarkdown(target.value));;
+  const letUpdateMarkdown = ({ target }) => dispatch(updateMarkdown(target.value));
   return (
     <>
       <div className={styles.Document}>
-        <Editor markdown={markdown} updateMarkdown={updateMarkdown} />
+        <Editor markdown={markdown} updateMarkdown={letUpdateMarkdown} />
         <Preview markdown={markdown} />
       </div>
     </>
   );
-};
+}
 
-export default Document;
+
