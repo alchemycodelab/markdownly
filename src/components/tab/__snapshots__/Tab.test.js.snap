@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab component renders Tab 1`] = `
+<li>
+  <input
+    name="tabs"
+    type="radio"
+  />
+  <label>
+     TAB 
+  </label>
+</li>
+`;

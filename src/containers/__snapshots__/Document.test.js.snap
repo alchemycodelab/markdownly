@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Document component renders Document 1`] = `
+<ContextProvider
+  value={null}
+>
+  <Document
+    markdown="# hi there"
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
+    }
+    updateMarkdown={[Function]}
+  />
+</ContextProvider>
+`;

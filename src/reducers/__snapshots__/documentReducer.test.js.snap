@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentReducer component renders DocumentReducer 1`] = `<Component />`;
+
+exports[`documentReducer component renders documentReducer 1`] = `<documentReducer />`;
