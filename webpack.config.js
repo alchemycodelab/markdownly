@@ -1,22 +1,38 @@
 const HtmlPlugin = require('html-webpack-plugin');
-const CleanPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
+// eslint-disable-next-line
 module.exports = {
-  entry: ['@babel/polyfill', './src/index.js'],
+  entry: './src/index.js',
   output: {
-    filename: 'bundle.[hash].js'
+    filename: 'bundle.[hash].js',
+    publicPath: '/'
   },
   devServer: {
-    port: 7890
+    port: 7891,
+    historyApiFallback: true
   },
   plugins: [
     new HtmlPlugin({ template: './src/index.html' }),
-    new CleanPlugin('./dist')
+    new CleanWebpackPlugin(),
+    new Dotenv({
+      systemvars: true
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'public' },
+      ]
+    })
   ],
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -29,8 +45,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader',
-            options: { sourceMap: true }
+            loader: 'style-loader'
           },
           {
             loader: 'css-loader',
@@ -45,8 +60,10 @@ module.exports = {
             options: {
               sourceMap: true,
               plugins: [
+                require('postcss-import')(),
                 require('autoprefixer')(),
-                require('postcss-nested')()
+                require('postcss-nested')(),
+                require('postcss-simple-vars')()
               ]
             }
           }
